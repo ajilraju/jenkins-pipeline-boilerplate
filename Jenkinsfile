@@ -2,7 +2,9 @@ pipeline {
     agent any
     stages {
         stage('Build 1') {
-            echo "Bulding project...."
+            steps {
+                echo "Bulding project...."
+            }
         }
         post {
             success {
