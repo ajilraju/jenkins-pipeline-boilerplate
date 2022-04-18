@@ -4,9 +4,26 @@ pipeline {
         cron('H * * * *')
     }
     stages {
-        stage('Date') {
+        parallel {
+            stage('Test Develop') {
+                steps {
+                    echo "Testing Develop code"
+                }
+            }
+            stage('Test Prod') {
+                steps {
+                    echo "Testing Production code"
+                }
+            }
+            stage('Test Prod') {
+                steps {
+                    echo "Testing Production code"
+                }
+            }
+        }
+        stage('Building') {
             steps {
-                sh 'date'
+                echo 'Building the source code'
             }
         }
     }
