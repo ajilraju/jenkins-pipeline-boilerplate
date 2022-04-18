@@ -16,9 +16,9 @@ pipeline {
                         echo "Testing Production code"
                     }
                 }
-                stage('Test Prod') {
+                stage('Test QA') {
                     steps {
-                        echo "Testing Production code"
+                        echo "Testing QA code"
                     }
                 }
             }
