@@ -1,16 +1,12 @@
 pipeline {
     agent any
-    environment { 
-        CC = 'gcc'
+    options {
+        timeout(time: 5, unit: 'SECONDS')
     }
     stages {
         stage('Example') {
-            environment { 
-                AN_ACCESS_KEY = credentials('demo') 
-            }
             steps {
-                sh 'printenv'
-                sh 'echo ${AN_ACCESS_KEY}'
+                sh 'sleep 10; true' // shell will timeout after the 5 elapsed.
             }
         }
     }
