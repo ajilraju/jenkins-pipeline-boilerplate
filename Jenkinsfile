@@ -1,33 +1,13 @@
 pipeline {
     agent any
-    triggers {
-        cron('H * * * *')
-    }
     stages {
-        stage('Test Diff environment') {
-            parallel {
-                stage('Test Develop') {
-                    steps {
-                        echo "Testing Develop code"
-                    }
-                }
-                stage('Test Prod') {
-                    steps {
-                        echo "Testing Production code"
-                    }
-                }
-                stage('Test QA') {
-                    steps {
-                        echo "Testing QA code"
-                    }
-                }
-            }
+        stage('Build 1') {
+            echo "Bulding project...."
         }
-        stage('Building') {
-            steps {
-                echo 'Building the source code'
+        post {
+            success {
+                slackSend message: 'Build is successful on ${env.BRANCH_NAME} branch and build id #${env.BUILD_NUMBER}'
             }
         }
     }
 }
- 
