@@ -5,10 +5,10 @@ pipeline {
             steps {
                 echo "Bulding project...."
             }
-        }
-        post {
-            success {
-                slackSend color: "good", message: 'Build is successful on ${env.BRANCH_NAME} branch and build id #${env.BUILD_NUMBER}'
+            post {
+                success {
+                    slackSend color: "good", message: 'Build is successful on ${env.BRANCH_NAME} branch and build id #${env.BUILD_NUMBER}'
+                }
             }
         }
     }
