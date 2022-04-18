@@ -1,22 +1,29 @@
 pipeline {
     agent any
-
     parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-
-        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
-
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-
-        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-    }    
+         choice(name: 'CHOICE', choices: ['No', 'Yes'], description: 'Pick something')
+    }
     stages {
-        stage('Using Params') {
-        steps {
-            echo "Hello ${params.PERSON}"
-            echo "Biography: ${params.BIOGRAPHY}"
-            echo "Toggle: ${params.TOGGLE}"
-            echo "Choice: ${params.CHOICE}"
+        stage('Test') {
+            steps {
+                echo "Testing the codes"
+                sh 'if [ ${CHOICE} = Yes ]; then exit 1; fi'
+            }
+            post {
+                failure {
+                    echo "Job failed... Cleaning up"
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                echo "npm build"
+            }
+            post {
+                always {
+                    echo "I will always run"
+                }
+            }
         }
     }
 }
