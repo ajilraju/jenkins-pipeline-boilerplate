@@ -11,12 +11,14 @@ pipeline {
         choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
     }    
     stages {
-        stage('Using Params') {
-        steps {
-            echo "Hello ${params.PERSON}"
-            echo "Biography: ${params.BIOGRAPHY}"
-            echo "Toggle: ${params.TOGGLE}"
-            echo "Choice: ${params.CHOICE}"
+        stage('Using parameters') {
+            steps {
+                echo "Hello ${params.PERSON}"
+                echo "Biography: ${params.BIOGRAPHY}"
+                echo "Toggle: ${params.TOGGLE}"
+                echo "Choice: ${params.CHOICE}"
+            }
         }
     }
 }
+ 
