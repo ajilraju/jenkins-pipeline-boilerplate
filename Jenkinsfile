@@ -4,13 +4,28 @@ pipeline {
         CC = 'gcc'
     }
     stages {
-        stage('Example') {
-            environment { 
-                AN_ACCESS_KEY = credentials('demo') 
+        stage('Checking compiler') {
+            when {
+                expression  { return CC == 'gcc' }
             }
             steps {
                 sh 'printenv'
-                sh 'echo ${AN_ACCESS_KEY}'
+            }
+        }
+        stage('Build with branch') {
+            when {
+                branch pattern: "[cC]onditionals", comparator: "REGEXP"
+            }
+            steps {
+                echo 'code is building'
+            }
+        }
+        stage('All True') {
+            when {
+                allOf {
+                    branch 'conditionals'
+                    environment name: 'CC', value: 'gcc'
+                }
             }
         }
     }
