@@ -27,6 +27,9 @@ pipeline {
                     environment name: 'CC', value: 'gcc'
                 }
             }
+            steps {
+                echo "Compiling and building"
+            }
         }
     }
 }
