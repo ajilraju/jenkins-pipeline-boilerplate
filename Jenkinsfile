@@ -19,6 +19,11 @@ pipeline {
                 echo "Choice: ${params.CHOICE}"
             }
         }
+        stage('Env and Params') {
+            steps {
+                sh 'printenv'
+            }
+        }
     }
 }
  
