@@ -38,5 +38,13 @@ pipeline {
                 }
             }
         }
+        stage('Shell return') {
+            environment {
+                NO_OF_USERS = sh(script: 'cat /etc/passwd | wc -l', returnStdout: true).trim()
+            }
+            steps {
+                echo "No of users in the system is ${env.NO_OF_USERS}"
+            }
+        }
     }
 }
