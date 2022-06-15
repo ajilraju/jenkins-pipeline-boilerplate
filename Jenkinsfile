@@ -1,16 +1,41 @@
 pipeline {
     agent any
+    // pipeline scope env
     environment { 
         CC = 'gcc'
     }
+
     stages {
-        stage('Example') {
-            environment { 
-                AN_ACCESS_KEY = credentials('demo') 
-            }
+        stage('Listing env') {
             steps {
                 sh 'printenv'
-                sh 'echo ${AN_ACCESS_KEY}'
+            }
+        }
+        stage('Using env vars') {
+            steps {
+                //groovy string
+                echo "Current Build Number #${env.BUILD_NUMBER}"
+                //shell script strings
+                sh 'echo "Current Build Number# $BUILD_NUMBER"'
+            }
+        }
+        stage('Stage level env') {
+            environment {
+                USER_NAME = 'Tom'
+            }
+            steps {
+                echo "The user ${env.USER_NAME} is a DevOps Engineer"
+                script {
+                    env.USER_GRT = 'Hello!!!'
+                }
+                echo "${env.USER_GRT} ${env.USER_NAME}"
+            }
+        }
+        stage('WithEnv scope') {
+            steps {
+                withEnv(["NAME=Thomas", "POS=DevOps"]) {
+                    echo "${env.NAME} is a ${env.POS}"
+                }
             }
         }
     }
