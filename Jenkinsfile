@@ -12,6 +12,14 @@ pipeline {
                 sh 'printenv'
             }
         }
+        stage('Equals') {
+            when {
+                equals expected: 5, actual: currentBuild.number
+            }
+            steps {
+                echo "Successfully work with equals"
+            }
+        }
         stage('Build with branch') {
             when {
                 branch pattern: "[cC]onditionals", comparator: "REGEXP"
