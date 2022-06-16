@@ -1,9 +1,18 @@
 pipeline {
     agent any
+    parameters {
+        booleanParam(name: 'STATE', defaultValue: true, description: 'Choice Right or Wrong')
+    }
     stages {
         stage('Build 1') {
             steps {
-                echo "Bulding project...."
+                script {
+                    if (STATE) {
+                        sh 'true'
+                    } else  {
+                        sh 'false'
+                    }
+                }
             }
             post {
                 success {
