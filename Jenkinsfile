@@ -31,7 +31,7 @@ pipeline {
         stage('All True') {
             when {
                 allOf {
-                    branch '*/conditionals'
+                    branch 'conditionals'
                     environment name: 'CC', value: 'gcc'
                 }
             }
