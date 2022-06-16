@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Equals') {
             when {
-                not equals expected: 5, actual: currentBuild.number
+                equals expected: 'SUCCESS', actual: currentBuild.result
             }
             steps {
                 echo "Successfully work with equals"
