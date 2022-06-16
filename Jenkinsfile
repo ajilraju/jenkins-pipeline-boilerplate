@@ -7,7 +7,7 @@ pipeline {
             }
             post {
                 success {
-                    slackSend color: "good", message: "The Build #{env.BUILD_NUMBER} is success: ${env.BUILD_URL}
+                    slackSend color: "good", message: "The Build #{env.BUILD_NUMBER} is success: ${env.BUILD_URL}"
                 }
             }
         }
