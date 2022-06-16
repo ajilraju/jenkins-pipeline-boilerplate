@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Build with branch') {
             when {
-                branch pattern: "origin/[cC]onditionals", comparator: "REGEXP"
+                branch pattern: "origin\/[cC]onditionals", comparator: "REGEXP"
             }
             steps {
                 echo 'code is building'
