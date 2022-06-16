@@ -7,7 +7,7 @@ pipeline {
         stage('Build 1') {
             steps {
                 script {
-                    if (STATE) {
+                    if (env.STATE) {
                         sh 'true'
                     } else  {
                         sh 'false'
