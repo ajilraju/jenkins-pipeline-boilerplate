@@ -4,13 +4,13 @@ pipeline {
         booleanParam(name: 'STATE', defaultValue: true, description: 'Choice Right or Wrong')
     }
     stages {
-        stage('Build 1') {
+        stage('Slack Notification') {
             steps {
                 script {
                     if (env.STATE) {
-                        sh 'true'
+                        sh 'exit 0'
                     } else  {
-                        sh 'false'
+                        sh 'exit 1'
                     }
                 }
             }
