@@ -10,7 +10,7 @@ pipeline {
                     slackSend color: "good", message: "The Build #${env.BUILD_NUMBER} is success: ${env.BUILD_URL}"
                 }
                 failure {
-                    slackSend color: "danger", message: "The Build #${env.BUILD_NUMBER} is success: ${env.BUILD_URL}"
+                    slackSend color: "danger", message: "The Build #${env.BUILD_NUMBER} is failed: ${env.BUILD_URL}"
                 }
             }
         }
