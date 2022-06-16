@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Build with branch') {
             when {
-                branch pattern: "[cC]onditionals", comparator: "REGEXP"
+                branch pattern: "*/[cC]onditionals", comparator: "REGEXP"
             }
             steps {
                 echo 'code is building'
@@ -31,7 +31,7 @@ pipeline {
         stage('All True') {
             when {
                 allOf {
-                    branch 'conditionals'
+                    branch '*/conditionals'
                     environment name: 'CC', value: 'gcc'
                 }
             }
