@@ -6,8 +6,9 @@ pipeline {
     stages {
         stage('Slack Notification') {
             steps {
+                sh 'printenv'
                 script {
-                    if (env.STATE) {
+                    if (env.STATE.toBoolean()) {
                         sh 'exit 0'
                     } else  {
                         sh 'exit 1'
