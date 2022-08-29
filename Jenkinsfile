@@ -7,10 +7,12 @@ pipeline {
     stages {
         stage('ssh examples') {
             environment {
-                EC2_PUB_KEY = credentials('web-srv-pub')
+                EC2_PUB_KEY = credentials('ssh-web')
             }
             steps {
-                sh 'ssh -t -t -i $EC2_PUB_KEY $USER@$SERVER_IP w'
+                sh '''
+                    ssh -t -t -o 'StrictHostKeyChecking=no' -i $EC2_PUB_KEY $USER@$SERVER_IP command w
+                '''
             }
         }
     }
