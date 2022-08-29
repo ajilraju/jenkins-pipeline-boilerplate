@@ -21,5 +21,10 @@ pipeline {
                 echo "Deployed."
             }
         }
+        stage('Clean') {
+            steps {
+                echo 'cleaning workspace'
+            }
+        }
     }
 }
