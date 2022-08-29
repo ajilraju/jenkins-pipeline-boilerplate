@@ -1,6 +1,7 @@
 pipeline {
     agent any
     options {
+        timestamps()
         retry(3)
         timeout(time: 5, unit: 'SECONDS')
     }
