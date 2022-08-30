@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('ssh examples') {
             environment {
-                EC2_PUB_KEY = credentials('ssh-web')
+                EC2_PUB_KEY = credentials('web-pub')
             }
             steps {
                 sh '''
