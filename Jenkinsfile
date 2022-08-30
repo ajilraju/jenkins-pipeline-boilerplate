@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'USER', description: 'Server connect username')
+        string(name: 'USER', defaultValue: 'ubuntu', description: 'Server connect username')
         string(name: 'SERVER_IP', description: 'Server ip address')
     }
     stages {
