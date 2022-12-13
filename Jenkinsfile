@@ -11,8 +11,17 @@ pipeline {
             }
             steps {
                 sh '''
-                    ssh -t -t -o 'StrictHostKeyChecking=no' -i $EC2_PUB_KEY $USER@$SERVER_IP command w
+                    ssh -o 'StrictHostKeyChecking=no' -i $EC2_PUB_KEY $USER@$SERVER_IP command w
                 '''
+            }
+        }
+        stage('Creds Binding') {
+            steps {
+                withCredentials([sshUserPrivateKey(credentialsId: 'deploy-java-ssh-key', keyFileVariable: 'SSHPRIKEY', usernameVariable: 'SSHUSER')]) {
+                    sh '''
+                       ssh -o 'StrictHostKeyChecking=no' -i $SSHPRIKEY $SSHUSER@$SERVER_IP command w 
+                    '''
+                }
             }
         }
     }
