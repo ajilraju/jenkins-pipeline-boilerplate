@@ -13,6 +13,9 @@ pipeline {
         }
         stage('Using env vars') {
             steps {
+                //Printing defined env value
+                echo "Current C compiler is ${env.CC}"
+
                 //groovy string
                 echo "Current Build Number #${env.BUILD_NUMBER}"
                 //shell script strings
