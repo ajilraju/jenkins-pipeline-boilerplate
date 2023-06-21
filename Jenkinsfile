@@ -1,6 +1,7 @@
 pipeline {
     agent any
     options {
+        disableConcurrentBuilds()
         timestamps()
         retry(2)
     }
