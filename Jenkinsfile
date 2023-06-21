@@ -3,7 +3,6 @@ pipeline {
     parameters {
         string(name: 'USER', defaultValue: 'ubuntu', description: 'Username for server connection')
         string(name: 'SERVER_IP', description: 'IP address of the server')
-
     }
     stages {
         stage('ssh examples') {
