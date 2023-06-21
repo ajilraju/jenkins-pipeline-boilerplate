@@ -16,7 +16,7 @@ pipeline {
                 //groovy string
                 echo "Current Build Number #${env.BUILD_NUMBER}"
                 //shell script strings
-                sh 'echo "Current Build Number# $BUILD_NUMBER"'
+                sh 'echo "Current Build Number #${BUILD_NUMBER}"'
             }
         }
         stage('Stage level env') {
