@@ -20,5 +20,16 @@ pipeline {
                 }
             }
         }
+        stage('Odd or Even') {
+            steps {
+                script {
+                    if (currentBuild.number % 2 == 0) {
+                        echo "It's an Even number build"
+                    } else {
+                        echo "It's an Odd number build"
+                    }
+                }
+            }
+        }
     }
 }
