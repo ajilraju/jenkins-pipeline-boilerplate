@@ -27,7 +27,7 @@ pipeline {
                 USER_NAME = 'Tom'
             }
             steps {
-                echo "The user ${env.USER_NAME} is a DevOps Engineer"
+                echo "Hi ${env.USER_NAME}!!!"
                 script {
                     env.USER_GRT = 'Hello!!!'
                 }
