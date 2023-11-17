@@ -16,7 +16,10 @@ pipeline {
         }
         stage('explicit errors') {
             steps {
-                sh 'exit 1'
+                sh '''
+                RC=$((RANDOM%2))
+                exit ${RC}
+                '''
             }
         }
     }
