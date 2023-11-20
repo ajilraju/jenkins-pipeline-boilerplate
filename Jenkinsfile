@@ -9,9 +9,9 @@ pipeline {
                 sh 'printenv'
                 script {
                     if (env.STATE.toBoolean()) {
-                        sh 'exit 0'
+                        sh 'sleep 3 && exit 0'
                     } else  {
-                        sh 'exit 1'
+                        sh 'sleep 3 && exit 1'
                     }
                 }
             }
